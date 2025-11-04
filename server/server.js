@@ -10,17 +10,26 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Database connection
-await connectDB()
+await connectDB();
 
-app.use(express.json())
-app.use(cors())
+// ✅ CORS setup — allow deployed frontend + local development
+app.use(
+  cors({
+    origin: [
+      "https://resume-builder-qb2v.vercel.app", // 🔹 your deployed frontend URL
+      "http://localhost:5173"             // 🔹 local Vite/React dev server
+    ],
+    credentials: true, // optional, only if using cookies/auth headers
+  })
+);
 
-app.get('/', (req, res)=> res.send("Server is live..."))
-app.use('/api/users', userRouter)
-app.use('/api/resumes', resumeRouter)
-app.use('/api/ai', aiRouter)
+app.use(express.json());
 
-app.listen(PORT, ()=>{
-    console.log(`Server is running on port ${PORT}`);
-    
+app.get("/", (req, res) => res.send("Server is live..."));
+app.use("/api/users", userRouter);
+app.use("/api/resumes", resumeRouter);
+app.use("/api/ai", aiRouter);
+
+app.listen(PORT, () => {
+  console.log(`✅ Server is running on port ${PORT}`);
 });
