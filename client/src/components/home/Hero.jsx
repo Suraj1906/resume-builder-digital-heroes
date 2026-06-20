@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { motion } from "framer-motion";
 
 const Hero = () => {
 
@@ -9,13 +10,12 @@ const Hero = () => {
     const [menuOpen, setMenuOpen] = React.useState(false);
 
     const logos = [
-        'https://saasly.prebuiltui.com/assets/companies-logo/instagram.svg',
-        'https://saasly.prebuiltui.com/assets/companies-logo/framer.svg',
-        'https://saasly.prebuiltui.com/assets/companies-logo/microsoft.svg',
-        'https://saasly.prebuiltui.com/assets/companies-logo/huawei.svg',
-        'https://saasly.prebuiltui.com/assets/companies-logo/walmart.svg',
-    ]
-
+  "https://cdn.simpleicons.org/react",
+  "https://cdn.simpleicons.org/nodedotjs",
+  "https://cdn.simpleicons.org/mongodb",
+  "https://cdn.simpleicons.org/tailwindcss",
+  "https://cdn.simpleicons.org/javascript",
+];
   return (
     <>
     <div className="min-h-screen pb-20">
@@ -65,6 +65,61 @@ const Hero = () => {
         {/* Hero Section */}
         <div className="relative flex flex-col items-center justify-center text-sm px-4 md:px-16 lg:px-24 xl:px-40 text-black">
             <div className="absolute top-28 xl:top-10 -z-10 left-1/4 size-72 sm:size-96 xl:size-120 2xl:size-132 bg-green-300 blur-[100px] opacity-30"></div>
+         
+          <motion.div
+  initial={{ opacity: 0, y: -30 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{
+    duration: 0.8,
+    ease: [0.22, 1, 0.36, 1],
+  }}
+  className="mt-12 flex flex-col items-center animate-pulse"
+>
+  
+  <div className="px-4 py-1 rounded-full border border-green-300 bg-green-50 text-green-700 text-sm font-medium mb-4">
+    Custom Software Developer Trial Submission
+  </div>
+
+  <h2 className="text-5xl md:text-7xl font-black bg-gradient-to-r from-green-700 via-emerald-500 to-green-600 bg-clip-text text-transparent text-center tracking-tight">
+  Suraj Bhardwaj
+</h2>
+
+  <a
+  href="mailto:surajbhardwaj5918@gmail.com"
+  className="mt-3 text-base md:text-lg font-medium text-slate-600 hover:text-green-600 transition underline underline-offset-4"
+>
+  surajbhardwaj5918@gmail.com
+</a>
+
+  <a
+  href="https://digitalheroesco.com"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="group mt-6 inline-flex items-center gap-3 rounded-full
+bg-gradient-to-r from-green-600 via-emerald-500 to-green-600
+px-8 py-4 text-white font-semibold
+shadow-[0_10px_40px_rgba(34,197,94,0.35)]
+hover:shadow-[0_20px_60px_rgba(34,197,94,0.45)]
+hover:scale-105 transition-all duration-300"
+>
+  <span>Built for Digital Heroes</span>
+
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="18"
+    height="18"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    className="group-hover:translate-x-1 transition-transform"
+  >
+    <path d="M5 12h14"></path>
+    <path d="m12 5 7 7-7 7"></path>
+  </svg>
+</a>
+
+</motion.div>
 
             {/* Avatars + Stars */}
             <div className="flex items-center mt-24">
@@ -95,6 +150,8 @@ const Hero = () => {
 
             <p className="max-w-md text-center text-base my-7">Create, edit and download professional resumes with AI-powered assistance.</p>
 
+            
+
             {/* CTA Buttons */}
             <div className="flex items-center gap-4 ">
                 <Link to='/app' className="bg-green-500 hover:bg-green-600 text-white rounded-full px-9 h-12 m-1 ring-offset-2 ring-1 ring-green-400 flex items-center transition-colors">
@@ -107,10 +164,12 @@ const Hero = () => {
                 </button>
             </div>
 
-            <p className="py-6 text-slate-600 mt-14">Trusting by leading brands, including</p>
+            <p className="py-6 text-slate-600 mt-14 font-medium">
+  Built with modern technologies
+</p>
 
             <div className="flex flex-wrap justify-between max-sm:justify-center gap-6 max-w-3xl w-full mx-auto py-4" id="logo-container">
-                {logos.map((logo, index) => <img key={index} src={logo} alt="logo" className="h-6 w-auto max-w-xs" />)}
+                {logos.map((logo, index) => <img key={index} src={logo} alt="logo" className="h-14 w-auto opacity-80 hover:opacity-100 hover:scale-110 transition-all duration-300" />)}
             </div>
         </div>
     </div>
